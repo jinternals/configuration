@@ -1,32 +1,26 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: jenkins
-  namespace: jenkins
+  name: spring-micrometer
+  namespace: {environment}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: jenkins
+        app: spring-micrometer
+        appVersion: ${appVersion}
+        configVersion: ${configVersion}
     spec:
       containers:
-        - name: jenkins
-          image: jinternals/jenkins:latest
-          #env:
-            #- name: JAVA_OPTS
-            #  value: -Djenkins.install.runSetupWizard=false
+        - name: spring-micrometer
+          image: jinternals/spring-micrometer-demo:${appVersion}
           ports:
             - name: http-port
               containerPort: 8080
-            - name: jnlp-port
-              containerPort: 50000
           volumeMounts:
-            - name: jenkins-home
-              mountPath: /var/jenkins_home
-            # name must match the volume name below
-            - name: jenkins-secret-volume
-              mountPath: /etc/jenkins-secret-volume
+            - name: micrometer-config
+              mountPath: /etc/micrometer-config
       volumes:
         - name: micrometer-config
           configMap:
