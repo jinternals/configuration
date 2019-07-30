@@ -8,8 +8,6 @@ spec:
     metadata:
       labels:
         app: spring-micrometer
-        appVersion: ${appVersion}
-        configVersion: ${configVersion}
     spec:
       containers:
         - name: spring-micrometer
