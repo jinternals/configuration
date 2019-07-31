@@ -7,10 +7,10 @@ spec:
   template:
     metadata:
       labels:
-        app: spring-micrometer
+        app: micrometer
     spec:
       containers:
-        - name: spring-micrometer
+        - name: micrometer
           image: jinternals/spring-micrometer-demo:${appVersion}
           ports:
             - name: http-port
