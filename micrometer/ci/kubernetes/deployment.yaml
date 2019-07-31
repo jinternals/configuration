@@ -3,16 +3,15 @@ kind: Deployment
 metadata:
   name: spring-micrometer
 spec:
-   replicas: 2
-   minReadySeconds: 200
-   strategy:
-     type: RollingUpdate
-     rollingUpdate:
-       maxUnavailable: 1
-       maxSurge: 1
-   selector:
-     matchLabels:
-       app: micrometer
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: micrometer
   template:
     metadata:
       labels:
