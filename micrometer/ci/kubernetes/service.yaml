@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: micrometer-service
   labels:
-    app: micrometer
+    app: micrometer-service
 spec:
   type: NodePort
   selector:
